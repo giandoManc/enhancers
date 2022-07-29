@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  enhancersbackend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/app
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+
+volumes:
+  db_data:
