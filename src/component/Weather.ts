@@ -11,14 +11,14 @@ class weatherComponent {
             const config = {
                 headers: { Authorization: `Bearer ${token}` }
             };            
-            let coutrysQuery = req.query.coutrysQuery || null;
-            if(!coutrysQuery){
-                coutrysQuery = process.env.country
+            let citysQuery = req.query.citysQuery || null;
+            if(!citysQuery){
+                citysQuery = process.env.country
             }
-            coutrysQuery = coutrysQuery.split(',');
+            citysQuery = citysQuery.split(',');
             let coutrys:any={};
-            for (let index = 0; index < coutrysQuery.length; index++) {
-                const element = coutrysQuery[index];
+            for (let index = 0; index < citysQuery.length; index++) {
+                const element = citysQuery[index];
                 let countryWeather = await weatherComponent.searchWeather(element);
                 let countryBussines = await weatherComponent.searchBussines(element,config);
                 coutrys[element] = {
